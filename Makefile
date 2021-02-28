@@ -20,6 +20,7 @@ $(NAME) : $(addprefix $(OBJS_DIR)/, $(OBJS))
 	@$(MAKE) -C $(LIBFT_DIR)
 	@$(MAKE) -C $(MLX_DIR)
 	@$(CC) $(CFLAGS) -o $@ $^ -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx
+	@install_name_tool -change $(MLX) $(MLX_DIR)/$(MLX) $(NAME)
 
 $(OBJS_DIR)/%.o : $(SRC_DIR)/%.c
 	@mkdir -p $(OBJS_DIR)
